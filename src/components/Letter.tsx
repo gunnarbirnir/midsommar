@@ -10,11 +10,6 @@ const Letter = () => {
   );
 };
 
-const LetterContainer = styled.div`
-  width: 100%;
-  padding: 20px;
-  display: grid;
-  place-items: center;
-`;
+const LetterContainer = styled.div``;
 
 export default Letter;

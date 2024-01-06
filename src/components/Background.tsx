@@ -3,15 +3,25 @@ import styled from "styled-components";
 import flowersImg from "../assets/flowers.webp";
 
 const Background = () => {
-  return <Flowers />;
+  return (
+    <BackgroundContainer>
+      <Flowers />
+    </BackgroundContainer>
+  );
 };
 
-const Flowers = styled.div`
+const BackgroundContainer = styled.div`
   height: 100%;
   width: 100%;
+  position: relative;
+  background-color: hsl(0deg 100% 100%);
+`;
+
+const Flowers = styled.div`
+  position: absolute;
+  inset: 0px;
   opacity: 0.3;
   background-image: url(${flowersImg});
-  background-color: hsl(0deg 100% 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
