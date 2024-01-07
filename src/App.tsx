@@ -1,18 +1,25 @@
+import { useState, useCallback } from "react";
 import styled from "styled-components";
 
 import "./index.css";
+import PreloadImages from "./components/PreloadImages";
 import Background from "./components/Background";
 import Letter from "./components/Letter";
 import { CONTENT_PADDING, CARD_MIN_WIDTH } from "./constants";
 
 const App = () => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const onImagesLoaded = useCallback(() => {
+    setImagesLoaded(true);
+  }, []);
+
   return (
     <AppContainer>
+      <PreloadImages onLoaded={onImagesLoaded} />
       <Background />
       <AppContent>
-        <ContentScroll>
-          <Letter />
-        </ContentScroll>
+        <ContentScroll>{imagesLoaded && <Letter />}</ContentScroll>
       </AppContent>
     </AppContainer>
   );

@@ -11,15 +11,18 @@ import {
   CARD_MIN_WIDTH,
 } from "../constants";
 
-const Letter = () => {
+const Card = () => {
   const cardRef = useRef<HTMLImageElement>(null);
   const { width: windowWidth } = useWindowDimensions();
   const [flipCard, setFlipCard] = useState(false);
   const [cardImgRatio, setCardImgRatio] = useState(0);
 
   const cardWidth = useMemo(() => {
-    const bla = Math.min(CARD_DEFAULT_WIDTH, windowWidth - CONTENT_PADDING * 2);
-    return Math.max(bla, CARD_MIN_WIDTH);
+    const availableWidth = windowWidth - CONTENT_PADDING * 2;
+    return Math.max(
+      Math.min(CARD_DEFAULT_WIDTH, availableWidth),
+      CARD_MIN_WIDTH
+    );
   }, [windowWidth]);
 
   const toggleFlipCard = useCallback(
@@ -83,4 +86,4 @@ const CardImg = styled.img`
   }
 `;
 
-export default Letter;
+export default Card;
